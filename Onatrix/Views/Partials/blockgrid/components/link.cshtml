@@ -1,0 +1,17 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var buttonLinkText = Model?.Content.Value<string>("buttonLinkText");
+    var buttonLinkUrl = Model?.Content.Value<string>("buttonLinkUrl");
+    var isExternal =(Model!.Content.Value<bool>("isExternal")) ? "external" : "";
+}
+
+@if (@isExternal == "external") {
+<a href="@buttonLinkUrl" target="_blank" title="@buttonLinkText" >@buttonLinkText</a>
+}
+else
+{
+<a href="@buttonLinkUrl" title="@buttonLinkText" >@buttonLinkText</a>
+}
